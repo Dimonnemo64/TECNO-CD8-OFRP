@@ -50,7 +50,6 @@ jobs:
         git clone https://gitlab.com/OrangeFox/misc/scripts
         cd scripts
         sudo bash setup/android_build_env.sh
-        sudo bash setup/install_android_sdk.sh
 
     - name: Set variables
       run: |
@@ -79,7 +78,6 @@ jobs:
       run: |
         PATH=~/bin:$PATH
         cd ${{ steps.pwd.outputs.pwd }}
-        git clone https://gitlab.com/OrangeFox/misc/theme.git
         git clone ${{ github.event.inputs.DEVICE_URL }} -b ${{ github.event.inputs.DEVICE_BRANCH }} ./${{ github.event.inputs.DEVICE_PATH }}
     - name: Building
       run: |
