@@ -64,14 +64,14 @@ jobs:
         echo "::set-output name=pwd::$(pwd)"
         git config --global user.name "Dimonnemo64"
         git config --global user.email "dimonnemo63@gmail.com"
-        rsync rsync://sources.orangefox.download/sources/fox_10.0 . --progress -a
+        repo init -u https://gitlab.com/OrangeFox/Manifest.git -b fox_9.0
       id: pwd
           
     - name: Repo Sync
       run: |
         PATH=~/bin:$PATH
         cd workspace
-        repo sync -j$(nproc --all)
+        repo sync -j8 --force-sync
             
     - name: Clone device
       run: |
