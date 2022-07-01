@@ -66,13 +66,13 @@ jobs:
     - name: Initialize repo
       run: |
         PATH=~/bin:$PATH
-        mkdir OrangeFox_sync
-        cd OrangeFox_sync
+        mkdir workspace
+        cd workspace
         echo "::set-output name=pwd::$(pwd)"
         git config --global user.name "Dimonnemo64"
         git config --global user.email "dimonnemo63@gmail.com"
         git clone https://gitlab.com/OrangeFox/sync.git
-        ./orangefox_sync.sh --branch 11.0 --path ~/fox_11.0
+        sudo bash orangefox_sync.sh --branch 11.0 --path ~/fox_11.0
       id: pwd
       
     - name: Clone device
