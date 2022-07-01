@@ -72,13 +72,13 @@ jobs:
         git config --global user.name "Dimonnemo64"
         git config --global user.email "dimonnemo63@gmail.com"
         git clone https://gitlab.com/OrangeFox/sync.git
-        cd ~/OrangeFox_sync/
-        ./orangefox_sync.sh --branch 11.0 --path ~/fox_11.0
       id: pwd
       
     - name: Clone device
       run: |
         PATH=~/bin:$PATH
+        cd ~/OrangeFox_sync/
+        ./orangefox_sync.sh --branch 11.0 --path ~/fox_11.0
         cd ${{ steps.pwd.outputs.pwd }}
         git clone ${{ github.event.inputs.DEVICE_URL }} -b ${{ github.event.inputs.DEVICE_BRANCH }} ./${{ github.event.inputs.DEVICE_PATH }}
     - name: Building
