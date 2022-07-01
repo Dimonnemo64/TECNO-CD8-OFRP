@@ -7,14 +7,6 @@ on:
         description: 'LIBRARY_NAME'
         required: true
         default: 'omni'
-      LIBRARY_URL:
-        description: 'LIBRARY_URL'
-        required: true
-        default: 'git://github.com/Ctapchuk/platform_manifest_ofrp_aosp.git'
-      LIBRARY_BRANCH:
-        description: 'LIBRARY_BRANCH'
-        required: true
-        default: 'ofrp-11_stock'
       DEVICE_URL:
         description: 'DEVICE_URL'
         required: true
@@ -64,7 +56,7 @@ jobs:
         echo "::set-output name=date::$(date +%F)"
       id: var
       
-    - name: Initialize repo
+    - name: Initialize OFRP
       run: |
         PATH=~/bin:$PATH
         mkdir workspace
@@ -72,14 +64,8 @@ jobs:
         echo "::set-output name=pwd::$(pwd)"
         git config --global user.name "Dimonnemo64"
         git config --global user.email "dimonnemo63@gmail.com"
-        repo init --depth=1 -u ${{ github.event.inputs.LIBRARY_URL }} -b ${{ github.event.inputs.LIBRARY_BRANCH }}
+        rsync rsync://sources.orangefox.download/sources/fox_10.0 . --progress -a
       id: pwd
-          
-    - name: Repo Sync
-      run: |
-        PATH=~/bin:$PATH
-        cd workspace
-        repo sync -j$(nproc --all)
       
     - name: Clone device
       run: |
@@ -99,8 +85,8 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          OrangeFox_10/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/*.zip
-          OrangeFox_10/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/${{ github.event.inputs.DEVICE_TYPE }}.img
+          workspace/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/*.zip
+          workspace/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/${{ github.event.inputs.DEVICE_TYPE }}.img
         name: ${{ github.event.inputs.DEVICE_NAME }}-${{ github.run_id }}
         tag_name: ${{ github.run_id }}
         body: Recovery for ${{ github.event.inputs.DEVICE_NAME }}
