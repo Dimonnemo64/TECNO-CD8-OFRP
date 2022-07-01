@@ -7,6 +7,14 @@ on:
         description: 'LIBRARY_NAME'
         required: true
         default: 'omni'
+      LIBRARY_URL:
+        description: 'LIBRARY_URL'
+        required: true
+        default: 'git://github.com/Ctapchuk/platform_manifest_ofrp_aosp.git'
+      LIBRARY_BRANCH:
+        description: 'LIBRARY_BRANCH'
+        required: true
+        default: 'ofrp-11_stock'
       DEVICE_URL:
         description: 'DEVICE_URL'
         required: true
@@ -56,25 +64,22 @@ jobs:
         echo "::set-output name=date::$(date +%F)"
       id: var
       
-    - name: Install repo
-      run: |
-        mkdir ~/bin
-        curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
-        chmod a+x ~/bin/repo
-        export PATH=~/bin:$PATH
-      
     - name: Initialize repo
       run: |
         PATH=~/bin:$PATH
-        mkdir ~/OrangeFox_10
-        cd ~/OrangeFox_10
+        mkdir workspace
+        cd workspace
         echo "::set-output name=pwd::$(pwd)"
         git config --global user.name "Dimonnemo64"
         git config --global user.email "dimonnemo63@gmail.com"
-        git clone https://github.com/Ctapchuk/OFRP_manifest_sync.git
-        cd ~/OrangeFox_10/sync
-        ./get_fox_10.sh ~/OrangeFox_10/fox_10.0
+        repo init --depth=1 -u ${{ github.event.inputs.LIBRARY_URL }} -b ${{ github.event.inputs.LIBRARY_BRANCH }}
       id: pwd
+          
+    - name: Repo Sync
+      run: |
+        PATH=~/bin:$PATH
+        cd workspace
+        repo sync -j$(nproc --all)
       
     - name: Clone device
       run: |
