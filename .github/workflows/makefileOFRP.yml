@@ -66,13 +66,14 @@ jobs:
     - name: Initialize repo
       run: |
         PATH=~/bin:$PATH
-        mkdir workspace
-        cd workspace
+        mkdir ~/OrangeFox_10
+        cd ~/OrangeFox_10
         echo "::set-output name=pwd::$(pwd)"
         git config --global user.name "Dimonnemo64"
         git config --global user.email "dimonnemo63@gmail.com"
-        git clone https://gitlab.com/OrangeFox/sync.git
-        sudo bash orangefox_sync.sh --branch 11.0 --path ~/fox_11.0
+        git clone https://github.com/Ctapchuk/OFRP_manifest_sync.git
+        cd ~/OrangeFox_10/sync
+        ./get_fox_10.sh ~/OrangeFox_10/fox_10.0
       id: pwd
       
     - name: Clone device
@@ -93,8 +94,8 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          workspace/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/*.zip
-          workspace/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/${{ github.event.inputs.DEVICE_TYPE }}.img
+          OrangeFox_10/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/*.zip
+          OrangeFox_10/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/${{ github.event.inputs.DEVICE_TYPE }}.img
         name: ${{ github.event.inputs.DEVICE_NAME }}-${{ github.run_id }}
         tag_name: ${{ github.run_id }}
         body: Recovery for ${{ github.event.inputs.DEVICE_NAME }}
