@@ -70,15 +70,14 @@ jobs:
     - name: Initialize OFRP
       run: |
         PATH=~/bin:$PATH
-        mkdir workspace
-        cd workspace
+        mkdir OrangeFox
+        cd OrangeFox
         echo "::set-output name=pwd::$(pwd)"
         git config --global user.name "Dimonnemo64"
         git config --global user.email "dimonnemo63@gmail.com"
         git clone https://gitlab.com/OrangeFox/sync.git
         cd sync
         ./orangefox_sync.sh --branch 10.0 --path ~/fox_10.0
-        cd -
       id: pwd        
             
     - name: Clone device
