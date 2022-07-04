@@ -75,7 +75,9 @@ jobs:
         echo "::set-output name=pwd::$(pwd)"
         git config --global user.name "Dimonnemo64"
         git config --global user.email "dimonnemo63@gmail.com"
-        rsync rsync://sources.orangefox.download/sources/fox_10.0 . --progress -a
+        git clone https://gitlab.com/OrangeFox/sync.git
+        cd sync
+        ./orangefox_sync.sh --branch 10.0 --path ~/fox_10.0
       id: pwd        
             
     - name: Clone device
