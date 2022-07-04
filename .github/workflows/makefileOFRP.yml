@@ -15,6 +15,18 @@ on:
         description: 'DEVICE_BRANCH'
         required: true
         default: 'main'
+      DEVICE_URL_THEMS:
+        description: 'DEVICE_URL_THEMS'
+        required: true
+        default: 'gitlab.com/OrangeFox/misc/theme'
+      DEVICE_PATH_THEMS:
+        description: 'DEVICE_PATH_THEMS'
+        required: true
+        default: 'misc/theme'
+      DEVICE_BRANCH_THEMS:
+        description: 'DEVICE_BRANCH_THEMS'
+        required: true
+        default: 'master'
       DEVICE_PATH:
         description: 'DEVICE_PATH'
         required: true
@@ -77,7 +89,7 @@ jobs:
       run: |
         PATH=~/bin:$PATH
         cd ${{ steps.pwd.outputs.pwd }}
-        git clone https://gitlab.com/OrangeFox/misc/theme.git
+        git clone ${{ github.event.inputs.DEVICE_URL_THEMS }} -b ${{ github.event.inputs.DEVICE_BRANCH_THEMS }} ./${{ github.event.inputs.DEVICE_PATH_THEMS }}
         git clone ${{ github.event.inputs.DEVICE_URL }} -b ${{ github.event.inputs.DEVICE_BRANCH }} ./${{ github.event.inputs.DEVICE_PATH }}
     - name: Building
       run: |
