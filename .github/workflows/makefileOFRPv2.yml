@@ -96,8 +96,9 @@ jobs:
         export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
         export LC_ALL="C"
         lunch ${{ github.event.inputs.LIBRARY_NAME }}_${{ github.event.inputs.DEVICE_NAME }}-eng
-        make clean
-        make ${{ github.event.inputs.DEVICE_TYPE }}image -j$(nproc --all)
+        lunch ${{ github.event.inputs.LIBRARY_NAME }}_${{ github.event.inputs.DEVICE_NAME }}-eng && mka recoveryimage
+#        mka clean
+#        mka ${{ github.event.inputs.DEVICE_TYPE }}image -j$(nproc --all)
     - name: Upload to Release
       uses: softprops/action-gh-release@v1
       with:
