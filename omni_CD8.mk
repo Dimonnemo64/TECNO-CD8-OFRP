@@ -28,8 +28,8 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_TARGET_VNDK_VERSION := 28
 PRODUCT_SHIPPING_API_LEVEL := 28
 
-#PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root,recovery/root) \
- #   $(LOCAL_PATH)/prebuilt/dtb:dtb
+PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root,recovery/root) \
+    device/TECNO/CD8/prebuilt/dtb:dtb
 
 # Fastbootd
 PRODUCT_PACKAGES += \
