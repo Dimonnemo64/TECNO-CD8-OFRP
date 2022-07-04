@@ -14,6 +14,8 @@
 # limitations under the License.
 #
 
+DEVICE_PATH := device/TECNO/CD8
+
 # Release name
 PRODUCT_RELEASE_NAME := TECNO-CD8
 
