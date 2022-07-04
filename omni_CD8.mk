@@ -21,7 +21,6 @@ PRODUCT_RELEASE_NAME := TECNO-CD8
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 $(call inherit-product, vendor/omni/config/common.mk)
 
 # Define shipped A10 With Dynamic Partitions
