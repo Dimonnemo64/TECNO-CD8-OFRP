@@ -18,7 +18,7 @@ on:
       DEVICE_URL_THEMS:
         description: 'DEVICE_URL_THEMS'
         required: true
-        default: 'gitlab.com/OrangeFox/misc/theme'
+        default: 'https://gitlab.com/OrangeFox/misc/theme.git'
       DEVICE_PATH_THEMS:
         description: 'DEVICE_PATH_THEMS'
         required: true
