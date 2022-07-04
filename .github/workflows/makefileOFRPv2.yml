@@ -76,7 +76,6 @@ jobs:
         git config --global user.name "Dimonnemo64"
         git config --global user.email "dimonnemo63@gmail.com"
         git clone https://github.com/Dimonnemo64/OFRP-sysc.git
-        cd sync
         ./orangefox_sync.sh --branch 10.0 --path ~/fox_10.0
       id: pwd        
             
