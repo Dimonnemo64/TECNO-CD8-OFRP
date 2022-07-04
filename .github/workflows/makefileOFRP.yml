@@ -64,7 +64,7 @@ jobs:
         echo "::set-output name=pwd::$(pwd)"
         git config --global user.name "Dimonnemo64"
         git config --global user.email "dimonnemo63@gmail.com"
-        repo init -u https://gitlab.com/OrangeFox/Manifest.git -b fox_9.0
+        repo init --depth=1 -u https://gitlab.com/OrangeFox/Manifest.git -b fox_9.0
       id: pwd
           
     - name: Repo Sync
@@ -86,7 +86,7 @@ jobs:
         source build/envsetup.sh
         lunch ${{ github.event.inputs.LIBRARY_NAME }}_${{ github.event.inputs.DEVICE_NAME }}-eng
         make clean
-        make ${{ github.event.inputs.DEVICE_TYPE }}image -j5(nproc --all)
+        make ${{ github.event.inputs.DEVICE_TYPE }}image -j$(nproc --all)
     - name: Upload to Release
       uses: softprops/action-gh-release@v1
       with:
