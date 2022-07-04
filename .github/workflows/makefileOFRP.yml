@@ -22,7 +22,7 @@ on:
       DEVICE_PATH_THEMS:
         description: 'DEVICE_PATH_THEMS'
         required: true
-        default: 'misc/theme'
+        default: 'bootable/recovery/gui/theme'
       DEVICE_BRANCH_THEMS:
         description: 'DEVICE_BRANCH_THEMS'
         required: true
