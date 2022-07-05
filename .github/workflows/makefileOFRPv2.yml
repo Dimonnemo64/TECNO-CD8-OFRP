@@ -77,7 +77,7 @@ jobs:
         git config --global user.email "dimonnemo63@gmail.com"
         git clone https://github.com/Ctapchuk/OFRP_manifest_sync.git
         cd sync
-        ./get_fox_10.sh ~/OrangeFox_10/fox_10.0
+        ./get_fox_10.sh
       id: pwd        
             
     - name: Clone device
@@ -94,7 +94,7 @@ jobs:
         export ALLOW_MISSING_DEPENDENCIES=true
         export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
         export LC_ALL="C"
-        lunch ${{ github.event.inputs.LIBRARY_NAME }}_${{ github.event.inputs.DEVICE_NAME }}-eng
+#       lunch ${{ github.event.inputs.LIBRARY_NAME }}_${{ github.event.inputs.DEVICE_NAME }}-eng
         lunch ${{ github.event.inputs.LIBRARY_NAME }}_${{ github.event.inputs.DEVICE_NAME }}-eng && mka recoveryimage
 #        mka clean
 #        mka ${{ github.event.inputs.DEVICE_TYPE }}image -j$(nproc --all)
