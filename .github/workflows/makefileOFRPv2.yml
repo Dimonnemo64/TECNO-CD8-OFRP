@@ -72,6 +72,7 @@ jobs:
         PATH=~/bin:$PATH
         mkdir OrangeFox
         cd OrangeFox
+        sudo bash setup/android_build_env.sh
         echo "::set-output name=pwd::$(pwd)"
         git config --global user.name "Dimonnemo64"
         git config --global user.email "dimonnemo63@gmail.com"
