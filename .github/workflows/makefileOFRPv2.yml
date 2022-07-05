@@ -75,10 +75,14 @@ jobs:
         echo "::set-output name=pwd::$(pwd)"
         git config --global user.name "Dimonnemo64"
         git config --global user.email "dimonnemo63@gmail.com"
-        git clone https://github.com/Ctapchuk/OFRP_manifest_sync.git
-        cd sync
-        ./get_fox_10.sh
-      id: pwd        
+        git clone https://gitlab.com/OrangeFox/sync.git
+      id: pwd 
+      
+    - name: Sync OFRP
+      run: |
+        PATH=~/bin:$PATH  
+        cd OrangeFox_sync/sync/
+        ./orangefox_sync.sh --branch 10.0 --path ~/fox_10.0     
             
     - name: Clone device
       run: |
