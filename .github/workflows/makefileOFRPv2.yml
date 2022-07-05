@@ -70,13 +70,12 @@ jobs:
     - name: Initialize OFRP
       run: |
         PATH=~/bin:$PATH
-        mkdir OrangeFox
-        cd OrangeFox
+        mkdir OrangeFox_10
+        cd OrangeFox_10
         echo "::set-output name=pwd::$(pwd)"
         git config --global user.name "Dimonnemo64"
         git config --global user.email "dimonnemo63@gmail.com"
         git clone https://github.com/Ctapchuk/OFRP_manifest_sync.git
-        cd sync
         ./get_fox_10.sh ~/OrangeFox_10/fox_10.0
       id: pwd        
             
