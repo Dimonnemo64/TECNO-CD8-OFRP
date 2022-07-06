@@ -95,7 +95,7 @@ jobs:
       run: |
         PATH=~/bin:$PATH
         cd ${{ steps.pwd.outputs.pwd }}
-        source build/envsetup.sh
+        source build/make/envsetup.sh
         export ALLOW_MISSING_DEPENDENCIES=true
         export OF_VANILLA_BUILD=1
         export OF_AB_DEVICE=1
