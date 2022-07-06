@@ -88,14 +88,14 @@ jobs:
     - name: Clone device
       run: |
         PATH=~/bin:$PATH
-        cd ${{ steps.pwd.outputs.pwd }}
+        cd /home/runner/work/TECNO-CD8-OFRP/TECNO-CD8-OFRP/workspace/fox_10.0
         git clone ${{ github.event.inputs.DEVICE_URL_THEMS }} -b ${{ github.event.inputs.DEVICE_BRANCH_THEMS }} ./${{ github.event.inputs.DEVICE_PATH_THEMS }}
         git clone ${{ github.event.inputs.DEVICE_URL }} -b ${{ github.event.inputs.DEVICE_BRANCH }} ./${{ github.event.inputs.DEVICE_PATH }}
     - name: Building
       run: |
         PATH=~/bin:$PATH
-        cd ${{ steps.pwd.outputs.pwd }}
-        source build/make/envsetup.sh
+        cd /home/runner/work/TECNO-CD8-OFRP/TECNO-CD8-OFRP/workspace/fox_10.0
+        source build/envsetup.sh
         export ALLOW_MISSING_DEPENDENCIES=true
         export OF_VANILLA_BUILD=1
         export OF_AB_DEVICE=1
