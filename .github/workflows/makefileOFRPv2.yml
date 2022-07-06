@@ -109,9 +109,6 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          cd /home/runner
-          fox_10.0/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/*.zip
-          fox_10.0/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/${{ github.event.inputs.DEVICE_TYPE }}.img
           /home/runner/fox_10.0/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/*.zip
           /home/runner/fox_10.0/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/${{ github.event.inputs.DEVICE_TYPE }}.img
         name: ${{ github.event.inputs.DEVICE_NAME }}-${{ github.run_id }}
