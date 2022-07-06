@@ -100,9 +100,6 @@ jobs:
         export OF_VANILLA_BUILD=1
         export OF_AB_DEVICE=1
         export OF_USE_MAGISKBOOT_FOR_ALL_PATCHES=1
-        export USE_CCACHE=1
-        export CCACHE_EXEC=/usr/bin/ccache
-        ccache -M 50G
         export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
         export LC_ALL="C"
         lunch ${{ github.event.inputs.LIBRARY_NAME }}_${{ github.event.inputs.DEVICE_NAME }}-eng
