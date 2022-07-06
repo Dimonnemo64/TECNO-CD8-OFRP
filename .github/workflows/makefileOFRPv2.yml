@@ -89,8 +89,8 @@ jobs:
       run: |
         PATH=~/bin:$PATH
         cd /home/runner/fox_10.0
-        git clone ${{ github.event.inputs.DEVICE_URL_THEMS }} -b ${{ github.event.inputs.DEVICE_BRANCH_THEMS }} ./${{ github.event.inputs.DEVICE_PATH_THEMS }}
         git clone ${{ github.event.inputs.DEVICE_URL }} -b ${{ github.event.inputs.DEVICE_BRANCH }} ./${{ github.event.inputs.DEVICE_PATH }}
+ #       git clone ${{ github.event.inputs.DEVICE_URL_THEMS }} -b ${{ github.event.inputs.DEVICE_BRANCH_THEMS }} ./${{ github.event.inputs.DEVICE_PATH_THEMS }}
     - name: Building
       run: |
         PATH=~/bin:$PATH
@@ -114,7 +114,7 @@ jobs:
       with:
         files: |
           workspace/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/*.zip
-#          workspace/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/${{ github.event.inputs.DEVICE_TYPE }}.img
+          workspace/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/${{ github.event.inputs.DEVICE_TYPE }}.img
         name: ${{ github.event.inputs.DEVICE_NAME }}-${{ github.run_id }}
         tag_name: ${{ github.run_id }}
         body: Recovery for ${{ github.event.inputs.DEVICE_NAME }}
