@@ -21,6 +21,7 @@ PRODUCT_RELEASE_NAME := TECNO-CD8
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 $(call inherit-product, vendor/omni/config/common.mk)
 
 # Define shipped A10 With Dynamic Partitions
@@ -28,8 +29,8 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_TARGET_VNDK_VERSION := 28
 PRODUCT_SHIPPING_API_LEVEL := 28
 
-PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root,recovery/root) \
-    device/TECNO/CD8/prebuilt/dtb:dtb
+#PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root,recovery/root) \
+#    device/TECNO/CD8/prebuilt/dtb:dtb
 
 # Fastbootd
 PRODUCT_PACKAGES += \
