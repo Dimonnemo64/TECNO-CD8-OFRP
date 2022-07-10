@@ -1,5 +1,7 @@
 #
-# Copyright (C) 2019 Potato Open Sauce Project
+# Copyright (C) 2019 The Android Open Source Project
+# Copyright (C) 2019 The TWRP Open Source Project
+# Copyright (C) 2020 SebaUbuntu's TWRP device tree generator 
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,37 +15,35 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-DEVICE_PATH := device/TECNO/CD8
-
-# Release name
-PRODUCT_RELEASE_NAME := TECNO-CD8
-
+# Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
+
+# Specify phone tech before including full_phone
 $(call inherit-product, vendor/omni/config/common.mk)
 
-# Define shipped A10 With Dynamic Partitions
-PRODUCT_USE_DYNAMIC_PARTITIONS := true
-PRODUCT_TARGET_VNDK_VERSION := 28
-PRODUCT_SHIPPING_API_LEVEL := 28
-
-#PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root,recovery/root) \
-#    device/TECNO/CD8/prebuilt/dtb:dtb
-
-# Fastbootd
-PRODUCT_PACKAGES += \
-    android.hardware.fastboot@1.0-impl-mock \
-    fastbootd
-
-## Device identifier. This must come after all inclusions
+# Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := CD8
 PRODUCT_NAME := omni_$(PRODUCT_DEVICE)
 PRODUCT_BRAND := TECNO
 PRODUCT_MODEL := TECNO CD8
 PRODUCT_MANUFACTURER := TECNO MOBILE LIMITED
+PRODUCT_RELEASE_NAME := TECNO_CD8
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRODUCT_NAME=omni_CD8 \
+    BUILD_PRODUCT=omni_CD8 \
+    TARGET_DEVICE=omni_CD8
 
 # HACK: Set vendor patch level
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.build.security_patch=2099-12-31
+
+PRODUCT_SYSTEM_PROPERTY_BLACKLIST += \
+    ro.bootimage.build.date.utc \
+    ro.build.date.utc
+
+# Dimen
+TARGET_SCREEN_HEIGHT := 1560
+TARGET_SCREEN_WIDTH := 720
+TW_THEME := portrait_hdpi

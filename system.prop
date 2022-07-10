@@ -1,8 +1,12 @@
-ro.secure=0
-ro.adb.secure=0
-ro.debuggable=1
 persist.sys.isUsbOtgEnabled=true
-ro.sys.usb.mtp.whql.enable=0
-ro.sys.usb.storage.type=mtp
+ro.boot.avb_version=1.1
+ro.boot.vbmeta.avb_version=1.0
+ro.product.brand=TECNO
+ro.product.name=omni_CD8
+ro.product.device=CD8
+ro.build.product=omni_CD8
+ro.treble.enabled=true
+ro.adb.secure=0
 ro.treble.enabled=true
 ro.mediatek.platform=MT6765
+persist.sys.isUsbOtgEnabled=true
