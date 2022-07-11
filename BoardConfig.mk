@@ -81,7 +81,7 @@ TARGET_IS_64_BIT := true
 
 # Crypto
 TW_INCLUDE_CRYPTO := true
-TW_INCLUDE_CRYPTO_FBE := true
+#TW_INCLUDE_CRYPTO_FBE := true
 
 # MTK Hardware
 BOARD_HAS_MTK_HARDWARE := true
