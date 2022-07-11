@@ -80,7 +80,7 @@ TARGET_USES_64_BIT_BINDER := true
 TARGET_IS_64_BIT := true
 
 # Crypto
-TW_INCLUDE_CRYPTO := true
+#TW_INCLUDE_CRYPTO := true
 #TW_INCLUDE_CRYPTO_FBE := true
 
 # MTK Hardware
