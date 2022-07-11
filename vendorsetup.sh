@@ -45,14 +45,10 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
     export MAGISK_VER=24.3
 # let's see what are our build VARs
 		if [ -n "$FOX_BUILD_LOG_FILE" -a -f "$FOX_BUILD_LOG_FILE" ]; then		  
-          export | grep "FOX" >> $FOX_BUILD_LOG_FILE
+                  export | grep "FOX" >> $FOX_BUILD_LOG_FILE
 		  export | grep "OF_" >> $FOX_BUILD_LOG_FILE
 		  export | grep "TARGET_" >> $FOX_BUILD_LOG_FILE
 		  export | grep "TW_" >> $FOX_BUILD_LOG_FILE
-		 	fi
-
-  	for var in eng user userdebug; do
-  		add_lunch_combo omni_"$FDEVICE"-$var
-  	done
+ 	fi
 fi
 #
