@@ -95,7 +95,8 @@ TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 
 # Crypto
 TW_INCLUDE_CRYPTO := true
-TARGET_HW_DISK_ENCRYPTION := true
+TW_INCLUDE_CRYPTO_FBE := true
+#TARGET_HW_DISK_ENCRYPTION := true
 TW_CRYPTO_FS_TYPE := "f2fs"
 TW_CRYPTO_REAL_BLKDEV := "/dev/block/platform/bootdevice/by-name/userdata"
 TW_CRYPTO_MNT_POINT := "/data"
