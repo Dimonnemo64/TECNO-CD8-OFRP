@@ -1,24 +1,8 @@
-FDEVICE="CD8"
+#Copyright (C) 2018 OrangeFox Recovery Project
+#Copyright (C) 2018 PitchBlack Recovery Project
 
-#set -o xtrace
-
-fox_get_target_device() {
-local chkdev=$(echo "$BASH_SOURCE" | grep -w $FDEVICE)
-   if [ -n "$chkdev" ]; then
-      FOX_BUILD_DEVICE="$FDEVICE"
-   else
-      chkdev=$(set | grep BASH_ARGV | grep -w $FDEVICE)
-      [ -n "$chkdev" ] && FOX_BUILD_DEVICE="$FDEVICE"
-   fi
-}
-
-if [ -z "$1" -a -z "$FOX_BUILD_DEVICE" ]; then
-   fox_get_target_device
-fi
-
-if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
-	export TW_DEFAULT_LANGUAGE="en"
-	export TARGET_DEVICE_ALT="CD8"
+### start build variables
+    export TW_DEFAULT_LANGUAGE="en"
     export FOX_REPLACE_BUSYBOX_PS=1
     export FOX_REPLACE_TOOLBOX_GETPROP=1
     export FOX_USE_TAR_BINARY=1
@@ -44,15 +28,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
     export OF_NO_RELOAD_AFTER_DECRYPTION=1
     export FOX_USE_SPECIFIC_MAGISK_ZIP="$HOME/Magisk.zip"
     export MAGISK_VER=24.3
-	
-# let's see what are our build VARs
-		if [ -n "$FOX_BUILD_LOG_FILE" -a -f "$FOX_BUILD_LOG_FILE" ]; then		  
-		  export | grep "FOX" >> $FOX_BUILD_LOG_FILE
-		  export | grep "OF_" >> $FOX_BUILD_LOG_FILE
-		  export | grep "TARGET_" >> $FOX_BUILD_LOG_FILE
-		  export | grep "TW_" >> $FOX_BUILD_LOG_FILE
-		fi
-
-fi
-
 ### end build variables    
+add_lunch_combo omni_CD8-eng
+add_lunch_combo omni_CD8-user
+add_lunch_combo omni_CD8-userdebug
