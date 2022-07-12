@@ -27,8 +27,8 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
     export FOX_USE_GREP_BINARY=1
     export FOX_USE_XZ_UTILS=1
     export FOX_USE_NANO_EDITOR=1
-    export OF_ENABLE_LPTOOLS=1
-    export OF_FBE_METADATA_MOUNT_IGNORE=1
+#    export OF_ENABLE_LPTOOLS=1
+#    export OF_FBE_METADATA_MOUNT_IGNORE=1
     export OF_PATCH_VBMETA_FLAG=1
     export OF_USE_GREEN_LED=0
     export FOX_RECOVERY_INSTALL_PARTITION="/dev/block/platform/bootdevice/by-name/recovery"
