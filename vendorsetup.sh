@@ -27,8 +27,8 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
     export FOX_USE_GREP_BINARY=1
     export FOX_USE_XZ_UTILS=1
     export FOX_USE_NANO_EDITOR=1
-#    export OF_ENABLE_LPTOOLS=1
-#    export OF_FBE_METADATA_MOUNT_IGNORE=1
+    export OF_ENABLE_LPTOOLS=1
+    export OF_FBE_METADATA_MOUNT_IGNORE=1
     export OF_PATCH_VBMETA_FLAG=1
     export OF_USE_GREEN_LED=0
     export FOX_RECOVERY_INSTALL_PARTITION="/dev/block/platform/bootdevice/by-name/recovery"
@@ -37,8 +37,8 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
     export FOX_RECOVERY_BOOT_PARTITION="/dev/block/platform/bootdevice/by-name/boot"
     export FOX_VERSION=R11.0_3-1
     export OF_DONT_PATCH_ENCRYPTED_DEVICE=1
-    export OF_SKIP_FBE_DECRYPTION=1
-    export OF_SKIP_FBE_DECRYPTION_SDKVERSION=31
+#    export OF_SKIP_FBE_DECRYPTION=1
+#    export OF_SKIP_FBE_DECRYPTION_SDKVERSION=31
     export OF_OTA_RES_DECRYPT=1
     export OF_NO_RELOAD_AFTER_DECRYPTION=1
     export FOX_USE_SPECIFIC_MAGISK_ZIP="$HOME/Magisk.zip"
