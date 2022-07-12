@@ -59,9 +59,6 @@ jobs:
         sudo apt clean
         sudo apt update
         sudo apt -y install bc libstdc++6 git gcc libssl-dev repo
-        git clone https://gitlab.com/OrangeFox/misc/scripts
-        cd scripts
-        sudo bash setup/android_build_env.sh
     - name: Set variables
       run: |
         echo "::set-output name=date::$(date +%F)"
