@@ -1,5 +1,4 @@
 import /init.recovery.microtrust.rc
-import /init.recovery.prepdecrypt.rc
 
 on fs
     install_keyring
@@ -70,6 +69,29 @@ on post-fs
     symlink /dev/block/mmcblk0boot0 /dev/block/platform/bootdevice/by-name/preloader_a
     symlink /dev/block/mmcblk0boot1 /dev/block/platform/bootdevice/by-name/preloader_b
 
+on fs
+    install_keyring
+    setprop crypto.ready 1
+
+service keystore_auth /system/bin/keystore_auth
+    oneshot
+    user system
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+
+service keystore /system/bin/keystore /tmp/misc/keystore
+    user root
+    group root drmrpc readproc
+    disabled
+    seclabel u:r:recovery:s0
+
+service gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-service
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+
 service keymaster-4-0 /vendor/bin/hw/android.hardware.keymaster@4.0-service.beanpod
     user root
     group root drmrpc
@@ -78,15 +100,25 @@ service keymaster-4-0 /vendor/bin/hw/android.hardware.keymaster@4.0-service.bean
 
 on property:hwservicemanager.ready=true
     start keymaster-4-0
+    start gatekeeper-1-0
 
 on property:ro.crypto.state=unsupported
     stop teei_daemon
     stop keymaster-4-0
+    stop gatekeeper-1-0
+    stop servicemanager
+    stop hwservicemanager
 
 on property:ro.crypto.state=unencrypted
     stop teei_daemon
     stop keymaster-4-0
+    stop gatekeeper-1-0
+    stop servicemanager
+    stop hwservicemanager
 
 on property:twrp.decrypt.done=true
     stop teei_daemon
     stop keymaster-4-0
+    stop gatekeeper-1-0
+    stop servicemanager
+    stop hwservicemanager
