@@ -5,7 +5,7 @@
 /vendor_image	        emmc	/dev/block/mapper/vendor                                flags=backup=1;display="Vendor Image";flashimg=1
 /product_image	        emmc	/dev/block/mapper/product                               flags=backup=1;display="Product Image";flashimg=1
 
-/metadata	      emmc           /dev/block/platform/bootdevice/by-name/metadata           flags=backup=1;flashimg=1
+/metadata	      emmc           /dev/block/platform/bootdevice/by-name/md_udc           flags=backup=1;flashimg=1
 /data               f2fs     /dev/block/platform/bootdevice/by-name/userdata                     flags=display="Data";fileencryption=aes-256-cts
 /boot             emmc           /dev/block/platform/bootdevice/by-name/boot               flags=backup=1;display="boot";flashimg=1
 /dtbo             emmc           /dev/block/platform/bootdevice/by-name/dtbo               flags=backup=1;display="Dtbo";flashimg=1
